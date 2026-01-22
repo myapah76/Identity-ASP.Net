@@ -52,3 +52,41 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio working folder
+.vs/
+
+# Rider IDE
+.idea/
+
+# Auto-generated files
+Generated_Code/
+
+# Local configuration
+.env
+appsettings.*.json
+appsettings.json
+secrets.json
+*.local.json
+
+# JetBrains Rider + VS Code + Resharper cache
+.vscode/
+*.DotSettings.user
+
+# Docker / Container artifacts
+docker-compose.override.yml
+
+# Sensitive config files
+appsettings.Production.json
+secrets.json
+*.pfx
+*.key
+*.pem
+*.cert
