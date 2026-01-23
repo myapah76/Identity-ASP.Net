@@ -1,15 +1,15 @@
-﻿using Application.Dtos.Role.Respone;
+﻿using IdentityService.Application.Dtos.Role.Respone;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Dtos.User.Respone
+namespace IdentityService.Application.Dtos.User.Respone
 {
     public class UserRep
     {
-        public long Id { get; set; }
+        public Guid Id { get; set; }
 
         public string Email { get; set; } = null!;
 

@@ -1,5 +1,5 @@
-﻿using Domain.Commons;
-using Domain.Entities;
+﻿using IdentityService.Domain.Commons;
+using IdentityService.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.ApplicationDbContext
+namespace IdentityService.Infrastructure.ApplicationDbContext
 {
     public interface IAppDbContext : IDisposable
     {

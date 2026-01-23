@@ -1,6 +1,6 @@
-﻿using Application.Abstrations;
-using Application.Constants;
-using Application.Dtos.Role.Request;
+﻿using IdentityService.Application.Abstrations;
+using IdentityService.Application.Constants;
+using IdentityService.Application.Dtos.Role.Request;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,7 +32,7 @@ public class RoleController(
 
     // GET BY ID
     [HttpGet("{id:long}")]
-    public async Task<IActionResult> GetById(long id)
+    public async Task<IActionResult> GetById(Guid id)
     {
         var role = await _roleService.GetByIdAsync(id);
         return role == null ? NotFound() : Ok(role);
@@ -40,7 +40,7 @@ public class RoleController(
 
     // UPDATE
     [HttpPut("{id:long}")]
-    public async Task<IActionResult> Update(long id, UpdateRoleReq request)
+    public async Task<IActionResult> Update(Guid id, UpdateRoleReq request)
     {
         var updated = await _roleService.UpdateAsync(id, request);
         return updated == null ? NotFound() : Ok(updated);
@@ -48,7 +48,7 @@ public class RoleController(
 
     // DELETE
     [HttpDelete("{id:long}")]
-    public async Task<IActionResult> Delete(long id)
+    public async Task<IActionResult> Delete(Guid id)
     {
         var success = await _roleService.DeleteAsync(id);
         return success ? NoContent() : NotFound();

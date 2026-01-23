@@ -1,14 +1,13 @@
 
-using Application;
-using Application.Abstrations;
-using Application.Mappers;
-using Application.Persistences.Repositories;
+using IdentityService.Application;
+using IdentityService.Application.Abstrations;
+using IdentityService.Application.Mappers;
+using IdentityService.Application.Persistences.Repositories;
 using DotNetEnv;
 using Identity_JWT.Middlewares;
-using Infrastructure.ApplicationDbContext;
-using Infrastructure.Interceptor;
-using Infrastructure.Persistences;
-using Infrastructure.Persistences.Repositories;
+using IdentityService.Infrastructure.ApplicationDbContext;
+using IdentityService.Infrastructure.Interceptor;
+using IdentityService.Infrastructure.Persistences.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;

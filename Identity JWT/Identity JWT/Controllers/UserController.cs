@@ -1,7 +1,7 @@
-﻿using Application.Abstrations;
-using Application.Dtos.User.Request;
+﻿using IdentityService.Application.Abstrations;
+using IdentityService.Application.Dtos.User.Request;
 using Microsoft.AspNetCore.Mvc;
-using Application.Constants;
+using IdentityService.Application.Constants;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Identity_JWT.Controllers;
@@ -29,21 +29,21 @@ public class UsersController(
     }
 
     [HttpGet("{id:long}")]
-    public async Task<IActionResult> GetById(long id)
+    public async Task<IActionResult> GetById(Guid id)
     {
         var user = await _userService.GetByIdAsync(id);
         return user == null ? NotFound() : Ok(user);
     }
 
     [HttpPut("{id:long}")]
-    public async Task<IActionResult> Update(long id, UpdateUserReq request)
+    public async Task<IActionResult> Update(Guid id, UpdateUserReq request)
     {
         var updated = await _userService.UpdateAsync(id, request);
         return updated == null ? NotFound() : Ok(updated);
     }
 
     [HttpDelete("{id:long}")]
-    public async Task<IActionResult> Delete(long id)
+    public async Task<IActionResult> Delete(Guid id)
     {
         var success = await _userService.DeleteAsync(id);
         return success ? NoContent() : NotFound();

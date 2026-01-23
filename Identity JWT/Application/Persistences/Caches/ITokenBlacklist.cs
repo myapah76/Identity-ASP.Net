@@ -1,4 +1,4 @@
-﻿namespace Application.Persistences.Caches;
+﻿namespace IdentityService.Application.Persistences.Caches;
 
 public interface ITokenBlacklist
 {

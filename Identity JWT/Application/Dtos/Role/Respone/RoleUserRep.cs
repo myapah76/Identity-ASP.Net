@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Dtos.Role.Respone
+namespace IdentityService.Application.Dtos.Role.Respone
 {
     public class RoleUserRep
     {
-        public long Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; } = null!;
     }
 }

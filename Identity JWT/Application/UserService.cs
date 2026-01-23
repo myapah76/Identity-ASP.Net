@@ -1,11 +1,11 @@
-﻿using Application.Abstrations;
-using Application.AppExceptions;
-using Application.Constants;
-using Application.Dtos.User.Request;
-using Application.Dtos.User.Respone;
-using Application.Persistences.Repositories;
+﻿using IdentityService.Application.Abstrations;
+using IdentityService.Application.AppExceptions;
+using IdentityService.Application.Constants;
+using IdentityService.Application.Dtos.User.Request;
+using IdentityService.Application.Dtos.User.Respone;
+using IdentityService.Application.Persistences.Repositories;
 using AutoMapper;
-using Domain.Entities;
+using IdentityService.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,17 +13,19 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application
+namespace IdentityService.Application
 {
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IRoleRepository _roleRepository;
         private readonly IMapper _mapper;
 
-        public UserService(IUserRepository userRepository, IMapper mapper)
+        public UserService(IUserRepository userRepository, IMapper mapper, IRoleRepository roleRepository)
         {
             _userRepository = userRepository;
             _mapper = mapper;
+            _roleRepository = roleRepository;
         }
 
         //CUSTOMER CREATE
@@ -36,7 +38,10 @@ namespace Application
             var user = _mapper.Map<User>(request);
             user.Password = BCrypt.Net.BCrypt.HashPassword(request.Password);
 
-            user.RoleId ??= 2; // Set role User
+            var role = await _roleRepository.GetByNameAsync("User");
+            if (role == null)
+                throw new Exception("Role 'User' not found");
+            user.RoleId ??= role.Id;// Set role User
             user.CreatedAt = DateTimeOffset.UtcNow;
             user.UpdatedAt = DateTimeOffset.UtcNow;
             user.Is_blocked ??= false;
@@ -65,7 +70,7 @@ namespace Application
         }
 
         //UPDATE
-        public async Task<UserRep?> UpdateAsync(long id, UpdateUserReq request)
+        public async Task<UserRep?> UpdateAsync(Guid id, UpdateUserReq request)
         {
             var existingUser = await _userRepository.GetByEmailAsync(request.Email);
             if (existingUser != null)
@@ -84,7 +89,7 @@ namespace Application
         }
 
         //DELETE
-        public async Task<bool> DeleteAsync(long id)
+        public async Task<bool> DeleteAsync(Guid id)
         {
             var user = await _userRepository.GetByIdAsync(id);
             if (user == null)
@@ -103,7 +108,7 @@ namespace Application
         }
 
         //GET BY ID
-        public async Task<UserRep?> GetByIdAsync(long id)
+        public async Task<UserRep?> GetByIdAsync(Guid id)
         {
             var user = await _userRepository.GetByIdAsync(id);
 

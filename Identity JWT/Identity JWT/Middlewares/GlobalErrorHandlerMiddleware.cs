@@ -1,4 +1,4 @@
-﻿using Application.AppExceptions;
+﻿using IdentityService.Application.AppExceptions;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
 

@@ -1,11 +1,11 @@
-﻿using Domain.Commons;
+﻿using IdentityService.Domain.Commons;
 using System;
 using System.Collections.Generic;
-namespace Domain.Entities;
+namespace IdentityService.Domain.Entities;
 
 public partial class User : SoftDeletedEntity, IEntity
 {
-    public long Id { get; set; }
+    public Guid Id { get; set; }
 
     public string Email { get; set; } = null!;
 
@@ -24,7 +24,7 @@ public partial class User : SoftDeletedEntity, IEntity
 
     public bool? Is_email_confirmed { get; set; }
 
-    public long? RoleId { get; set; }
+    public Guid? RoleId { get; set; }
     public virtual Role? Role { get; set; }
 
     public virtual ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();

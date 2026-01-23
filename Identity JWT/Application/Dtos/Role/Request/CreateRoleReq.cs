@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Dtos.Role.Request
+namespace IdentityService.Application.Dtos.Role.Request
 {
     public class CreateRoleReq
     {

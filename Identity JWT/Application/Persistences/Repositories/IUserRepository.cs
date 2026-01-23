@@ -1,11 +1,11 @@
-﻿using Domain.Entities;
+﻿using IdentityService.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Persistences.Repositories
+namespace IdentityService.Application.Persistences.Repositories
 {
     public interface IUserRepository : IGenericRepository<User>
     {
