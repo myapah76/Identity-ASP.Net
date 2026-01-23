@@ -1,6 +1,7 @@
-﻿using Application.Persistences.Repositories;
-using Domain.Entities;
-using Infrastructure.ApplicationDbContext;
+﻿using IdentityService.Application.Persistences.Repositories;
+using IdentityService.Domain.Entities;
+using IdentityService.Infrastructure.ApplicationDbContext;
+using IdentityService.Infrastructure.Persistences.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Persistences.Repositories
+namespace IdentityService.Infrastructure.Persistences.Repositories
 {
     public class UserRepository : GenericRepository<User>, IUserRepository
     {
@@ -50,7 +51,7 @@ namespace Infrastructure.Persistences.Repositories
             return user;
         }
 
-        public override async Task<User?> GetByIdAsync(long id)
+        public override async Task<User?> GetByIdAsync(Guid id)
         {
             var user = await _dbContext.Users
                .Include(u => u.Role)

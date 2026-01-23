@@ -1,15 +1,15 @@
-﻿using Application.Dtos.Role.Respone;
-using Application.Dtos.User.Request;
-using Application.Dtos.User.Respone;
+﻿using IdentityService.Application.Dtos.User.Request;
+using IdentityService.Application.Dtos.User.Respone;
 using AutoMapper;
-using Domain.Entities;
+using IdentityService.Domain.Entities;
+using IdentityService.Application.Dtos.Role.Respone;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Mappers
+namespace IdentityService.Application.Mappers
 {
     public class UserProfile : Profile
     {

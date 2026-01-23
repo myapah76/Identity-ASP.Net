@@ -1,9 +1,9 @@
-﻿using Application.Abstrations;
-using Application.Dtos.Role.Request;
-using Application.Dtos.Role.Respone;
-using Application.Persistences.Repositories;
+﻿using IdentityService.Application.Abstrations;
+using IdentityService.Application.Dtos.Role.Request;
+using IdentityService.Application.Dtos.Role.Respone;
+using IdentityService.Application.Persistences.Repositories;
 using AutoMapper;
-using Domain.Entities;
+using IdentityService.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application
+namespace IdentityService.Application
 {
     public class RoleService : IRoleService
     {
@@ -40,7 +40,7 @@ namespace Application
             return _mapper.Map<RoleRep>(role);
         }
         // UPDATE
-        public async Task<RoleRep?> UpdateAsync(long id, UpdateRoleReq request)
+        public async Task<RoleRep?> UpdateAsync(Guid id, UpdateRoleReq request)
         {
             var existingRole = await _roleRepository.GetByNameAsync(request.Name);
             if (existingRole != null)
@@ -59,7 +59,7 @@ namespace Application
         }
 
         // DELETE
-        public async Task<bool> DeleteAsync(long id)
+        public async Task<bool> DeleteAsync(Guid id)
         {
             var role = await _roleRepository.GetByIdAsync(id);
             if (role == null)
@@ -78,7 +78,7 @@ namespace Application
         }
 
         // GET BY ID
-        public async Task<RoleRep?> GetByIdAsync(long id)
+        public async Task<RoleRep?> GetByIdAsync(Guid id)
         {
             var role = await _roleRepository.GetByIdAsync(id);
 

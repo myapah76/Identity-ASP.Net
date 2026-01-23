@@ -1,6 +1,6 @@
 <Solution>
-  <Project Path="Application/Application.csproj" />
-  <Project Path="Domain/Domain.csproj" />
-  <Project Path="Identity JWT/Identity JWT.csproj" />
-  <Project Path="Infrastructure/Infrastructure.csproj" />
+  <Project Path="Application/IdentityService.Application.csproj" />
+  <Project Path="Domain/IdentityService.Domain.csproj" />
+  <Project Path="Identity JWT/IdentityService.API.csproj" />
+  <Project Path="Infrastructure/IdentityService.Infrastructure.csproj" />
 </Solution>

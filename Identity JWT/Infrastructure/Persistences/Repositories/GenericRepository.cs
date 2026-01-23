@@ -1,6 +1,6 @@
-﻿using Application.Persistences.Repositories;
-using Domain.Commons;
-using Infrastructure.ApplicationDbContext;
+﻿using IdentityService.Application.Persistences.Repositories;
+using IdentityService.Domain.Commons;
+using IdentityService.Infrastructure.ApplicationDbContext;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Persistences.Repositories
+namespace IdentityService.Infrastructure.Persistences.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class, IEntity
     {
@@ -22,14 +22,14 @@ namespace Infrastructure.Persistences.Repositories
             _dbSet = _dbContext.Set<T>();
         }
 
-        public virtual async Task<long> AddAsync(T entity)
+        public virtual async Task<Guid> AddAsync(T entity)
         {
             await _dbSet.AddAsync(entity);
             await _dbContext.SaveChangesAsync();
             return entity.Id;
         }
 
-        public virtual async Task DeleteAsync(long id)
+        public virtual async Task DeleteAsync(Guid id)
         {
             var entityFromDb = await GetByIdAsync(id)
                 ?? throw new DirectoryNotFoundException($"{typeof(T).Name} is not found");
@@ -75,7 +75,7 @@ namespace Infrastructure.Persistences.Repositories
             return await query.OrderByDescending(x => x.CreatedAt).ToListAsync();
         }
 
-        public virtual async Task<T?> GetByIdAsync(long id)
+        public virtual async Task<T?> GetByIdAsync(Guid id)
         {
             //return  await _dbSet.FirstOrDefault(t => t.Id == id && t.);
             var entityFromDb = await _dbSet.FindAsync(id);
@@ -90,7 +90,7 @@ namespace Infrastructure.Persistences.Repositories
             return entityFromDb;
         }
 
-        public virtual async Task<T[]> GetByIdsAsync(long[] ids)
+        public virtual async Task<T[]> GetByIdsAsync(Guid[] ids)
         {
             var query = _dbSet.AsQueryable().Where(e => ids.Contains(e.Id));
             if (typeof(SoftDeletedEntity).IsAssignableFrom(typeof(T)))
@@ -102,7 +102,7 @@ namespace Infrastructure.Persistences.Repositories
             return await query.ToArrayAsync();
         }
 
-        public virtual async Task<long> UpdateAsync(T entity)
+        public virtual async Task<int> UpdateAsync(T entity)
         {
             var entityFromDb = await GetByIdAsync(entity.Id);
             if (entityFromDb == null)
@@ -127,7 +127,7 @@ namespace Infrastructure.Persistences.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteRangeAsync(IEnumerable<long> ids)
+        public async Task DeleteRangeAsync(IEnumerable<Guid> ids)
         {
             var entities = await GetByIdsAsync(ids.ToArray());
             foreach (var entity in entities)

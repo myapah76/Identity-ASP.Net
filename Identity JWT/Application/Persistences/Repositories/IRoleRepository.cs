@@ -1,6 +1,6 @@
-﻿using Domain.Entities;
+﻿using IdentityService.Domain.Entities;
 
-namespace Application.Persistences.Repositories
+namespace IdentityService.Application.Persistences.Repositories
 {
     public interface IRoleRepository : IGenericRepository<Role>
     {

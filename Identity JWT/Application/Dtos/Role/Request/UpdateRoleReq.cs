@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Dtos.Role.Request
+namespace IdentityService.Application.Dtos.Role.Request
 {
     public class UpdateRoleReq
     {
         [Required]
-        public long Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [MaxLength(50)]

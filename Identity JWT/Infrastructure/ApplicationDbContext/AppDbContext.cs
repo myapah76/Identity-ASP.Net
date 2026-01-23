@@ -1,14 +1,12 @@
-﻿using Domain.Commons;
-using Domain.Entities;
-using Infrastructure;
-using Infrastructure.ApplicationDbContext;
+﻿using IdentityService.Domain.Commons;
+using IdentityService.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 
-namespace Infrastructure.Persistences;
+namespace IdentityService.Infrastructure.ApplicationDbContext;
 
 public partial class AppDbContext : DbContext, IAppDbContext
 {
@@ -39,7 +37,7 @@ public partial class AppDbContext : DbContext, IAppDbContext
             entity.HasKey(e => e.Id).HasName("RefreshTokens_pkey");
 
             entity.HasIndex(e => e.Token, "RefreshTokens_token_key").IsUnique();
-
+            entity.Property(e => e.Id).HasDefaultValueSql("uuid_generate_v4()");
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
             entity.Property(e => e.Is_revoked).HasDefaultValue(false);
             entity.Property(e => e.Issued_at).HasDefaultValueSql("CURRENT_TIMESTAMP");
@@ -55,7 +53,7 @@ public partial class AppDbContext : DbContext, IAppDbContext
             entity.HasKey(e => e.Id).HasName("roles_pkey");
 
             entity.HasIndex(e => e.Slug, "roles_slug_key").IsUnique();
-
+            entity.Property(e => e.Id).HasDefaultValueSql("uuid_generate_v4()");
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
             entity.Property(e => e.IsDeleted).HasDefaultValue(false);
             entity.Property(e => e.Name).HasMaxLength(50);

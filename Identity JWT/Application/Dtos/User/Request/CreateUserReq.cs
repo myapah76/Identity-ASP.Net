@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Dtos.User.Request
+namespace IdentityService.Application.Dtos.User.Request
 {
     public class CreateUserReq
     {
@@ -26,6 +26,6 @@ namespace Application.Dtos.User.Request
         [MaxLength(255)]
         public string? Address { get; set; }
 
-        public long? RoleId { get; set; }
+        public Guid? RoleId { get; set; }
     }
 }

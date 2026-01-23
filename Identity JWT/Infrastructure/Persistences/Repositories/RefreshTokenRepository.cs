@@ -1,9 +1,10 @@
-using Application.Persistences.Repositories;
-using Domain.Entities;
-using Infrastructure.ApplicationDbContext;
+using IdentityService.Application.Persistences.Repositories;
+using IdentityService.Domain.Entities;
+using IdentityService.Infrastructure.ApplicationDbContext;
+using IdentityService.Infrastructure.Persistences.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Persistences.Repositories;
+namespace IdentityService.Infrastructure.Persistences.Repositories;
 
 public class RefreshTokenRepository : GenericRepository<RefreshToken>, IRefreshTokenRepository
 {
@@ -12,7 +13,7 @@ public class RefreshTokenRepository : GenericRepository<RefreshToken>, IRefreshT
     }
 
 
-    public Task<RefreshToken?> GetRefreshTokenByAccountIdAsync(long Id)
+    public Task<RefreshToken?> GetRefreshTokenByAccountIdAsync(Guid Id)
     {
         throw new NotImplementedException();
     }
@@ -30,7 +31,7 @@ public class RefreshTokenRepository : GenericRepository<RefreshToken>, IRefreshT
             .FirstOrDefaultAsync(rt => rt.Token == token);
     }
 
-    public async Task RevokeAllUserTokensAsync(long userId)
+    public async Task RevokeAllUserTokensAsync(Guid userId)
     {
         var tokens = await _dbContext.RefreshTokens
             .Where(rt => rt.User_id == userId && rt.Is_revoked != true)

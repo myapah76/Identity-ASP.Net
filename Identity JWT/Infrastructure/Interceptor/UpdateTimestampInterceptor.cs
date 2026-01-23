@@ -1,4 +1,4 @@
-﻿using Domain.Commons;
+﻿using IdentityService.Domain.Commons;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System;
@@ -8,7 +8,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Interceptor
+namespace IdentityService.Infrastructure.Interceptor
 {
     public class UpdateTimestampInterceptor : SaveChangesInterceptor
     {

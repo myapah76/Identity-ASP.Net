@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.AppExceptions
+namespace IdentityService.Application.AppExceptions
 {
     public class ForbidenException : Exception
     {

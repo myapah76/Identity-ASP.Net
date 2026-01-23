@@ -1,7 +1,7 @@
-using Application.Dtos.Auth.Request;
-using Application.Dtos.Auth.Response;
+using IdentityService.Application.Dtos.Auth.Request;
+using IdentityService.Application.Dtos.Auth.Response;
 
-namespace Application.Abstrations;
+namespace IdentityService.Application.Abstrations;
 
 public interface IAuthService
 {

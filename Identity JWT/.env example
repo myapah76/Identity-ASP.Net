@@ -1,0 +1,17 @@
+# Postgres Configuration
+DATABASE_CONNECTION_STRING=Host=localhost;Port=5432;Database=identity;Username=admin;Password=12345
+DB_USER=admin
+DB_PASSWORD=12345
+DB_NAME=identity
+DB_PORT=5432
+
+# Redis Configuration
+REDIS_CONFIGURATION=localhost:6379
+REDIS_PORT=6379
+
+# JWT Configuration
+JWT_SECRET_KEY=secret-key-here-minimum-32-characters
+JWT_ISSUER=homeword01-be
+JWT_AUDIENCE=homeword01-be
+JWT_ACCESS_TOKEN_EXPIRATION_MINUTES=1
+JWT_REFRESH_TOKEN_EXPIRATION_DAYS=7

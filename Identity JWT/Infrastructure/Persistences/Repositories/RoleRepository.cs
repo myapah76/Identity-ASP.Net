@@ -1,9 +1,10 @@
-﻿using Application.Persistences.Repositories;
-using Domain.Entities;
-using Infrastructure.ApplicationDbContext;
+﻿using IdentityService.Application.Persistences.Repositories;
+using IdentityService.Domain.Entities;
+using IdentityService.Infrastructure.ApplicationDbContext;
+using IdentityService.Infrastructure.Persistences.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Persistences.Repositories
+namespace IdentityService.Infrastructure.Persistences.Repositories
 {
     public class RoleRepository : GenericRepository<Role>, IRoleRepository
     {

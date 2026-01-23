@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Dtos.User.Request
+namespace IdentityService.Application.Dtos.User.Request
 {
     public class UpdateUserReq
     {
@@ -16,6 +16,6 @@ namespace Application.Dtos.User.Request
 
         public bool? IsBlocked { get; set; }
 
-        public long? RoleId { get; set; }
+        public Guid? RoleId { get; set; }
     }
 }

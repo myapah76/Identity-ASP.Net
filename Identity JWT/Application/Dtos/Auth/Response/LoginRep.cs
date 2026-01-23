@@ -1,6 +1,6 @@
-using Application.Dtos.User.Respone;
+using IdentityService.Application.Dtos.User.Respone;
 
-namespace Application.Dtos.Auth.Response;
+namespace IdentityService.Application.Dtos.Auth.Response;
 
 public class LoginRep
 {

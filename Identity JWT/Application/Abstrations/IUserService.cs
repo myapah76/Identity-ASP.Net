@@ -1,12 +1,12 @@
-﻿using Application.Dtos.User.Request;
-using Application.Dtos.User.Respone;
+﻿using IdentityService.Application.Dtos.User.Request;
+using IdentityService.Application.Dtos.User.Respone;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Abstrations
+namespace IdentityService.Application.Abstrations
 {
     public interface IUserService
     {
@@ -14,12 +14,12 @@ namespace Application.Abstrations
 
         Task<UserRep> AdminCreateAsync(CreateUserReq request);
 
-        Task<UserRep?> GetByIdAsync(long id);
+        Task<UserRep?> GetByIdAsync(Guid id);
 
         Task<IEnumerable<UserRep>> GetAllAsync();
 
-        Task<UserRep?> UpdateAsync(long id, UpdateUserReq request);
+        Task<UserRep?> UpdateAsync(Guid id, UpdateUserReq request);
 
-        Task<bool> DeleteAsync(long id);
+        Task<bool> DeleteAsync(Guid id);
     }
 }

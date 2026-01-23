@@ -1,13 +1,13 @@
-using Domain.Entities;
+using IdentityService.Domain.Entities;
 
-namespace Application.Persistences.Repositories;
+namespace IdentityService.Application.Persistences.Repositories;
 
 public interface IRefreshTokenRepository : IGenericRepository<RefreshToken>
 {
-    Task<RefreshToken?> GetRefreshTokenByAccountIdAsync(long Id);
+    Task<RefreshToken?> GetRefreshTokenByAccountIdAsync(Guid Id);
     Task<RefreshToken?> GetByTokenAsync(string token);
     Task<RefreshToken?> GetByTokenIncludeRevokedAsync(string token);
-    Task RevokeAllUserTokensAsync(long userId);
+    Task RevokeAllUserTokensAsync(Guid userId);
     Task SaveChangesAsync();
 }
 

@@ -1,4 +1,4 @@
-namespace Application.Dtos.Auth.Response;
+namespace IdentityService.Application.Dtos.Auth.Response;
 
 public class RegisterRep
 {

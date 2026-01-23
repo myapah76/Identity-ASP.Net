@@ -1,4 +1,4 @@
-namespace Application.Dtos.Auth.Request;
+namespace IdentityService.Application.Dtos.Auth.Request;
 
 internal class RegistrationData
 {
